@@ -5,24 +5,18 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import java.util.List;
 
 @Entity
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "streets")
-public class Street {
-
+public class Address {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "street_id")
+    @Column(name = "address_id")
     private int id;
 
-    @Column(name = "street_name")
-    private String streetName;
+    private String daireNo;
+    private String kapıNo;
 
-    @ManyToOne()
-    @JoinColumn(name = "neighborhood_id")
-    private Neighborhood neighborhood;
 }

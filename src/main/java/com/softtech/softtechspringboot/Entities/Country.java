@@ -1,5 +1,6 @@
 package com.softtech.softtechspringboot.Entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -15,7 +16,7 @@ import java.util.List;
 public class Country {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "country_id")
+    @Column(name = "id")
     private int id;
 
     @Column(name = "country_name")
@@ -24,11 +25,9 @@ public class Country {
     @Column(name = "country_code")
     private String countryCode;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "country")
     private List<City> cities;
 
-    @ManyToOne()
-    @JoinColumn(name = "district_id")
-    private District district;
 
 }

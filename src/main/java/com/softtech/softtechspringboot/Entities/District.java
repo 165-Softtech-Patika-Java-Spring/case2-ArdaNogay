@@ -15,17 +15,17 @@ import java.util.List;
 public class District {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "district_id")
+    @Column(name = "id")
     private int id;
 
     @Column(name = "district_name")
     private String districtName;
 
-    @OneToMany(mappedBy = "district")
-    private List<Country> countries;
-
     @ManyToOne()
-    @JoinColumn(name = "neighborhood_id")
-    private  Neighborhood neighborhood;
+    @JoinColumn(name = "city_id")
+    private City city;
+
+    @OneToMany(mappedBy = "district")
+    private  List<Neighborhood> neighborhoods;
 
 }

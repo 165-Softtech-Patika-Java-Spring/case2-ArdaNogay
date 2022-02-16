@@ -5,6 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.List;
 
 
 @Entity
@@ -27,4 +28,9 @@ public class City {
     @ManyToOne()
     @JoinColumn(name = "country_id")
     private Country country;
+
+    @OneToMany(mappedBy = "city")
+    private List<District> districts;
+
+
 }
