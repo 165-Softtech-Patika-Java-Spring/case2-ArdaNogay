@@ -15,7 +15,7 @@ import java.util.List;
 public class Country {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
+    @Column(name = "country_id")
     private int id;
 
     @Column(name = "country_name")
@@ -26,5 +26,9 @@ public class Country {
 
     @OneToMany(mappedBy = "country")
     private List<City> cities;
+
+    @ManyToOne()
+    @JoinColumn(name = "district_id")
+    private District district;
 
 }
