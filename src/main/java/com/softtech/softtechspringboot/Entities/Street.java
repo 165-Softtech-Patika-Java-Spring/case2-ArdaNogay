@@ -1,5 +1,6 @@
 package com.softtech.softtechspringboot.Entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -26,6 +27,7 @@ public class Street {
     @JoinColumn(name = "neighborhood_id")
     private Neighborhood neighborhood;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "street")
     private List<Address> addresses;
 }

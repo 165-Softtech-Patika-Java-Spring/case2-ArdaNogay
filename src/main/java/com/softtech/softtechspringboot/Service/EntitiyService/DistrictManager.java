@@ -11,7 +11,7 @@ public class DistrictManager {
 
     private final DistrictRepository districtRepository;
 
-    public District add(District district){
+    public District save(District district){
         return districtRepository.save(district);
     }
 }

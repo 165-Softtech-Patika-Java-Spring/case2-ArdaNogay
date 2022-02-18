@@ -1,5 +1,6 @@
 package com.softtech.softtechspringboot.Entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -32,6 +33,7 @@ public class City {
     @OneToMany(mappedBy = "city")
     private List<District> districts;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "city")
     private  List<Address> addresses;
 

@@ -11,7 +11,7 @@ public class CityManager {
 
     private final CityRepository cityRepository;
 
-    public City add(City city){
+    public City save(City city){
         return cityRepository.save(city);
     }
 }

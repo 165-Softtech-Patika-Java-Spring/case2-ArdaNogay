@@ -11,7 +11,7 @@ public class StreetManager {
 
     private final StreetRepository streetRepository;
 
-    public Street add(Street street){
+    public Street save(Street street){
         return streetRepository.save(street);
     }
 }

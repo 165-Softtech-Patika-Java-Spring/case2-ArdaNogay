@@ -11,7 +11,7 @@ public class NeighborhoodManager {
 
     private final NeighborhoodRepository neighborhoodRepository;
 
-    public Neighborhood add(Neighborhood neighborhood){
+    public Neighborhood save(Neighborhood neighborhood){
         return  neighborhoodRepository.save(neighborhood);
     }
 
