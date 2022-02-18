@@ -1,13 +1,14 @@
 package com.softtech.softtechspringboot.Controller;
 
+import com.softtech.softtechspringboot.Dto.CountryDto;
 import com.softtech.softtechspringboot.Entities.Country;
-import com.softtech.softtechspringboot.Service.CountryManager;
+import com.softtech.softtechspringboot.Service.ControllerService.CountryControllerManager;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 
 @RestController
@@ -15,12 +16,19 @@ import org.springframework.web.bind.annotation.RestController;
 @RequiredArgsConstructor
 public class BaseController {
 
-    private final CountryManager countryManager;
+    private final CountryControllerManager countryControllerManager;
 
     @PostMapping("/addCountry")
     public ResponseEntity saveCountry(@RequestBody Country country){
-        countryManager.add(country);
+        countryControllerManager.add(country);
         return ResponseEntity.ok(country);
+    }
+
+    @GetMapping
+    public ResponseEntity findAll(){
+
+        List<CountryDto> countryDtoList = countryControllerManager.findAll();
+        return new ResponseEntity(countryDtoList, HttpStatus.OK);
     }
 
 }
