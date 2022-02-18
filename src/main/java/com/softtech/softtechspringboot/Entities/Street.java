@@ -22,7 +22,10 @@ public class Street {
     @Column(name = "street_name")
     private String streetName;
 
-    @ManyToOne()
+    @ManyToOne
     @JoinColumn(name = "neighborhood_id")
     private Neighborhood neighborhood;
+
+    @OneToMany(mappedBy = "street")
+    private List<Address> addresses;
 }

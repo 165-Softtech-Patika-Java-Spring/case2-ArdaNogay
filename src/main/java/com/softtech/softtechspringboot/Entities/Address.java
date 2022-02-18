@@ -17,6 +17,26 @@ public class Address {
     @Column(name = "id")
     private int id;
 
+    @ManyToOne
+    @JoinColumn(name = "country_id")
+    private Country country;
+
+    @ManyToOne
+    @JoinColumn(name = "city_id")
+    private City city;
+
+    @ManyToOne
+    @JoinColumn(name = "district_id")
+    private District district;
+
+    @ManyToOne
+    @JoinColumn(name = "neighborhood_id")
+    private Neighborhood neighborhood;
+
+    @ManyToOne
+    @JoinColumn(name = "street_id")
+    private Street street;
+
     private String daireNo;
     private String kapıNo;
 

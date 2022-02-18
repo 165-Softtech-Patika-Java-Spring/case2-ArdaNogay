@@ -25,12 +25,15 @@ public class City {
     @Column(name = "city_code")
     private String cityCode;
 
-    @ManyToOne()
+    @ManyToOne
     @JoinColumn(name = "country_id")
     private Country country;
 
     @OneToMany(mappedBy = "city")
     private List<District> districts;
+
+    @OneToMany(mappedBy = "city")
+    private  List<Address> addresses;
 
 
 }

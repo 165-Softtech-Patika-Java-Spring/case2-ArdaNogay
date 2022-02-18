@@ -10,13 +10,14 @@ import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
-public class CountryManager {
+public class CountryManager {//CountryEntityService
 
+    //             CountryDao
     private  final CountryRepository countryRepository;
 
-//    public Country add(Country country) {
-//        return countryRepository.save(country);
-//    }
+    public Country save(Country country) {
+        return countryRepository.save(country);
+    }
 
     public Optional<Country> findById(int id){
         return countryRepository.findById(id);

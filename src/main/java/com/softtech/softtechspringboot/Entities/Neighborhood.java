@@ -22,12 +22,14 @@ public class Neighborhood {
     @Column(name = "neighborhood_name")
     private String neighborhoodName;
 
-    @ManyToOne()
+    @ManyToOne
     @JoinColumn(name = "district_id")
     private District district;
 
     @OneToMany(mappedBy = "neighborhood")
     private List<Street> streets;
 
+    @OneToMany(mappedBy = "neighborhood")
+    private List<Address> addresses;
 
 }
