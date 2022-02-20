@@ -12,25 +12,18 @@ import java.util.List;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "districts")
+@Table(name = "district")
 public class District {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
     private int id;
 
-    @Column(name = "district_name")
+    @Column(name = "district_name", nullable = false)
     private String districtName;
 
-    @ManyToOne
-    @JoinColumn(name = "city_id")
-    private City city;
+    @Column(name = "id_city")
+    private int cityId;
 
-    @OneToMany(mappedBy = "district")
-    private  List<Neighborhood> neighborhoods;
-
-    @JsonIgnore
-    @OneToMany(mappedBy = "district")
-    private List<Address> addresses;
 
 }

@@ -12,22 +12,17 @@ import java.util.List;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "streets")
+@Table(name = "street")
 public class Street {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "street_id")
     private int id;
 
     @Column(name = "street_name")
     private String streetName;
 
-    @ManyToOne
-    @JoinColumn(name = "neighborhood_id")
-    private Neighborhood neighborhood;
+    @Column(name = "id_neighborhood")
+    private int neighborhoodId;
 
-    @JsonIgnore
-    @OneToMany(mappedBy = "street")
-    private List<Address> addresses;
 }

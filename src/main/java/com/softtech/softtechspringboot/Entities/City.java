@@ -13,29 +13,19 @@ import java.util.List;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "cities")
+@Table(name = "city")
 public class City {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
     private int id;
 
-    @Column(name = "city_name")
+    @Column(name = "city_name", nullable = false,unique = true)
     private String cityName;
 
-    @Column(name = "city_code")
+    @Column(name = "city_plate", nullable = false,unique = true)
     private String cityPlate;
 
-    @ManyToOne
-    @JoinColumn(name = "country_id")
-    private Country country;
-
-    @OneToMany(mappedBy = "city")
-    private List<District> districts;
-
-    @JsonIgnore
-    @OneToMany(mappedBy = "city")
-    private  List<Address> addresses;
-
+    @Column(name = "id_country")
+    private int countryId;
 
 }

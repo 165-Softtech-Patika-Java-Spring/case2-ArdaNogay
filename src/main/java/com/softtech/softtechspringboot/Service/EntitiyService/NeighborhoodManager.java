@@ -27,4 +27,5 @@ public class NeighborhoodManager {
         return neighborhoodRepository.findAll();
     }
 
+
 }

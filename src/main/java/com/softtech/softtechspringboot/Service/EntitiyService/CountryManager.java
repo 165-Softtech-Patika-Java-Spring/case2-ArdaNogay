@@ -23,6 +23,4 @@ public class CountryManager {//CountryEntityService
         return countryRepository.findCountryByCountryCode(countryCode);
     }
 
-
-
 }

@@ -12,31 +12,17 @@ import java.util.List;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "neighborhoods")
+@Table(name = "neighborhood")
 public class Neighborhood {
 
-    /**
-     * @Id
-     *     @SequenceGenerator(name = "CusCustomer" , sequenceName = "CUS_CUSTOMER_ID_SEQ")
-     *     @GeneratedValue(generator = "CusCustomer")
-     */
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "neighborhood_id")
     private int id;
 
     @Column(name = "neighborhood_name")
     private String neighborhoodName;
 
-    @ManyToOne
-    @JoinColumn(name = "district_id")
-    private District district;
-
-    @OneToMany(mappedBy = "neighborhood")
-    private List<Street> streets;
-
-    @JsonIgnore
-    @OneToMany(mappedBy = "neighborhood")
-    private List<Address> addresses;
+    @Column(name = "id_district")
+    private int districtId;
 
 }

@@ -12,11 +12,10 @@ import java.util.List;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "countries")
+@Table(name = "country")
 public class Country {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
     private int id;
 
     @Column(name = "country_name")
@@ -25,12 +24,7 @@ public class Country {
     @Column(name = "country_code")
     private String countryCode;
 
-    @JsonIgnore
-    @OneToMany(mappedBy = "country")
-    private List<City> cities;
-
-    @JsonIgnore
-    @OneToMany(mappedBy = "country")
-    private List<Address> addresses;
+    @Column(name = "id_address")
+    private int addressId;
 
 }

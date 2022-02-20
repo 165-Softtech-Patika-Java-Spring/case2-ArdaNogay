@@ -7,6 +7,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 
 @RestController
@@ -62,16 +63,22 @@ public class BaseController {
         return ResponseEntity.ok(city);
     }
 
+    @GetMapping("/getDistrictsByCityId")
+    public ResponseEntity getAllDistrictsByCityId(@RequestParam int cityId){
+        Optional<List<District>> districts = districtManager.findDistrictOfTheCityById(cityId);
+        return ResponseEntity.ok(districts);
+    }
+
     // TEST AMAÇLI YAZILDI
-    @GetMapping("getNeigborhoods")
-    public ResponseEntity getAllNeigborhoods(){
+    @GetMapping("getNeighborhoods")
+    public ResponseEntity getAllNeighborhoods(){
         List<Neighborhood> neighborhoods = neighborhoodManager.getAll();
         return ResponseEntity.ok(neighborhoods);
     }
 
-    @PutMapping("/setNewNeighborhoodName")
-    public ResponseEntity setNeighborhoodName(@PathVariable int id, @PathVariable String newNeighborhoodName){
-        Neighborhood neighborhood = neighborhoodManager.update(id, newNeighborhoodName);
+    @PutMapping("/setNewNeighborhoodName/{NeighborhoodId}/{newNeighborhoodName}")
+    public ResponseEntity setNeighborhoodName(@PathVariable int NeighborhoodId, @PathVariable String newNeighborhoodName){
+        Neighborhood neighborhood = neighborhoodManager.update(NeighborhoodId, newNeighborhoodName);
         return ResponseEntity.ok(neighborhood);
     }
 }

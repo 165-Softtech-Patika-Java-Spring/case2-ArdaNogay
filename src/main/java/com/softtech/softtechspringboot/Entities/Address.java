@@ -10,34 +10,31 @@ import javax.persistence.*;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "addresses")
+@Table(name = "address")
 public class Address {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
     private int id;
 
-    @ManyToOne
-    @JoinColumn(name = "country_id")
-    private Country country;
+    @Column(name = "building_no", nullable = false)
+    private String buildingNumber;
 
-    @ManyToOne
-    @JoinColumn(name = "city_id")
-    private City city;
+    @Column(name = "door_no", nullable = false)
+    private String doorNumber;
 
-    @ManyToOne
-    @JoinColumn(name = "district_id")
-    private District district;
+    @Column(name = "id_country",nullable = false)
+    private int countryId;
 
-    @ManyToOne
-    @JoinColumn(name = "neighborhood_id")
-    private Neighborhood neighborhood;
+    @Column(name = "id_city",nullable = false)
+    private int cityId;
 
-    @ManyToOne
-    @JoinColumn(name = "street_id")
-    private Street street;
+    @Column(name = "id_district",nullable = false)
+    private int districtId;
 
-    private String daireNo;
-    private String kapıNo;
+    @Column(name = "id_neighborhood",nullable = false)
+    private int neighborhoodId;
+
+    @Column(name = "id_street",nullable = false)
+    private int streetId;
 
 }
