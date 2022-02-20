@@ -6,6 +6,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 
 
 @RestController
@@ -13,8 +14,7 @@ import org.springframework.web.bind.annotation.*;
 @RequiredArgsConstructor
 public class BaseController {
 
-//    private final CountryDto countryDto;
-    private final CountryManager countryManager;
+    private final CountryManager countryManager;//    private final CountryDto countryDto;
     private final CityManager cityManager;
     private final DistrictManager districtManager;
     private final NeighborhoodManager neighborhoodManager;
@@ -48,5 +48,30 @@ public class BaseController {
     public ResponseEntity saveStreet(@RequestBody Street street){
         streetManager.save(street);
         return ResponseEntity.ok(street);
+    }
+
+    @GetMapping("/getCountry")
+    public ResponseEntity getCountryByCountryCode(@RequestParam String countryCode){
+        Country country = countryManager.findByCountryCode(countryCode);
+        return ResponseEntity.ok(country);
+    }
+
+    @GetMapping("/getCity")
+    public ResponseEntity getCityByCityPlate(@RequestParam String cityPlate){
+        City city = cityManager.findByCityPlate(cityPlate);
+        return ResponseEntity.ok(city);
+    }
+
+    // TEST AMAÇLI YAZILDI
+    @GetMapping("getNeigborhoods")
+    public ResponseEntity getAllNeigborhoods(){
+        List<Neighborhood> neighborhoods = neighborhoodManager.getAll();
+        return ResponseEntity.ok(neighborhoods);
+    }
+
+    @PutMapping("/setNewNeighborhoodName")
+    public ResponseEntity setNeighborhoodName(@PathVariable int id, @PathVariable String newNeighborhoodName){
+        Neighborhood neighborhood = neighborhoodManager.update(id, newNeighborhoodName);
+        return ResponseEntity.ok(neighborhood);
     }
 }

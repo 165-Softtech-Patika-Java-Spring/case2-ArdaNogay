@@ -24,7 +24,7 @@ public class City {
     private String cityName;
 
     @Column(name = "city_code")
-    private String cityCode;
+    private String cityPlate;
 
     @ManyToOne
     @JoinColumn(name = "country_id")

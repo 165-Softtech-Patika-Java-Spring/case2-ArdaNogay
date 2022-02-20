@@ -14,4 +14,8 @@ public class CityManager {
     public City save(City city){
         return cityRepository.save(city);
     }
+
+    public City findByCityPlate(String cityPlate){
+        return cityRepository.findCityByCityPlate(cityPlate);
+    }
 }

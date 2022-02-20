@@ -19,12 +19,10 @@ public class CountryManager {//CountryEntityService
         return countryRepository.save(country);
     }
 
-    public Optional<Country> findById(int id){
-        return countryRepository.findById(id);
+    public Country findByCountryCode(String countryCode){
+        return countryRepository.findCountryByCountryCode(countryCode);
     }
 
-    public List<Country> findAll(){
-        return countryRepository.findAll();
-    }
+
 
 }

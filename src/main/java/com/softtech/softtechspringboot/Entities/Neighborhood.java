@@ -15,6 +15,11 @@ import java.util.List;
 @Table(name = "neighborhoods")
 public class Neighborhood {
 
+    /**
+     * @Id
+     *     @SequenceGenerator(name = "CusCustomer" , sequenceName = "CUS_CUSTOMER_ID_SEQ")
+     *     @GeneratedValue(generator = "CusCustomer")
+     */
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "neighborhood_id")

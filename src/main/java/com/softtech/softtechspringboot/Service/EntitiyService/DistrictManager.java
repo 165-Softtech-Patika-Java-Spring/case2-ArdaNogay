@@ -1,5 +1,6 @@
 package com.softtech.softtechspringboot.Service.EntitiyService;
 
+import com.softtech.softtechspringboot.Entities.City;
 import com.softtech.softtechspringboot.Entities.District;
 import com.softtech.softtechspringboot.Repository.DistrictRepository;
 import lombok.RequiredArgsConstructor;
@@ -14,4 +15,8 @@ public class DistrictManager {
     public District save(District district){
         return districtRepository.save(district);
     }
+
+//    public List<District> findDistrictOfTheCity(int cityId){
+//        return
+//    }
 }
