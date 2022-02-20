@@ -65,8 +65,14 @@ public class BaseController {
 
     @GetMapping("/getDistrictsByCityId")
     public ResponseEntity getAllDistrictsByCityId(@RequestParam int cityId){
-        Optional<List<District>> districts = districtManager.findDistrictOfTheCityById(cityId);
+        Optional<List<District>> districts = districtManager.findDistrictsOfTheCityById(cityId);
         return ResponseEntity.ok(districts);
+    }
+
+    @GetMapping("/getNeighborhoodsByDistrictId")
+    public ResponseEntity getAllNeighborhoodsByDistrictId(@RequestParam int districtId){
+        Optional<List<Neighborhood>> neighborhoods = neighborhoodManager.findNeighborhoodsOfTheDistrictById(districtId);
+        return ResponseEntity.ok(neighborhoods);
     }
 
     // TEST AMAÇLI YAZILDI

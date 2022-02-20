@@ -18,7 +18,7 @@ public class DistrictManager {
         return districtRepository.save(district);
     }
 
-    public Optional<List<District>> findDistrictOfTheCityById(int cityId){
+    public Optional<List<District>> findDistrictsOfTheCityById(int cityId){
         return districtRepository.findAllByCityId(cityId);
     }
 }
