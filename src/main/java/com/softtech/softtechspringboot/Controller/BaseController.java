@@ -75,6 +75,12 @@ public class BaseController {
         return ResponseEntity.ok(neighborhoods);
     }
 
+    @GetMapping("/getStreetsByNeighborhoodId")
+    public ResponseEntity getAllStreetsByNeighborhoodId(@RequestParam int neighborhoodId){
+        Optional<List<Street>> streets = streetManager.findStreetsOfTheNeighborhoodById(neighborhoodId);
+        return ResponseEntity.ok(streets);
+    }
+
     // TEST AMAÇLI YAZILDI
     @GetMapping("getNeighborhoods")
     public ResponseEntity getAllNeighborhoods(){
@@ -86,5 +92,11 @@ public class BaseController {
     public ResponseEntity setNeighborhoodName(@PathVariable int NeighborhoodId, @PathVariable String newNeighborhoodName){
         Neighborhood neighborhood = neighborhoodManager.update(NeighborhoodId, newNeighborhoodName);
         return ResponseEntity.ok(neighborhood);
+    }
+
+    @PutMapping("/setNewStreetName/{StreetId}/{newStreetName}")
+    public ResponseEntity setStreetName(@PathVariable int StreetId, @PathVariable String newStreetName){
+        Street street = streetManager.update(StreetId, newStreetName);
+        return ResponseEntity.ok(street);
     }
 }
