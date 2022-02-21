@@ -12,4 +12,6 @@ public interface StreetRepository extends JpaRepository<Street,Integer> {
 
     Optional<List<Street>> findAllByNeighborhoodId(Integer neighborhoodId);
 
+    boolean existsStreetByIdAndNeighborhoodId(int streetId,int neighborhoodId);
+
 }

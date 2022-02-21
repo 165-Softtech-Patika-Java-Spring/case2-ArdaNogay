@@ -1,5 +1,7 @@
 package com.softtech.softtechspringboot.Controller;
 
+import com.softtech.softtechspringboot.Dto.AddressDto;
+import com.softtech.softtechspringboot.Dto.AddressSaveDto;
 import com.softtech.softtechspringboot.Entities.*;
 import com.softtech.softtechspringboot.Service.EntitiyService.*;
 import lombok.RequiredArgsConstructor;
@@ -15,11 +17,18 @@ import java.util.Optional;
 @RequiredArgsConstructor
 public class BaseController {
 
-    private final CountryManager countryManager;//    private final CountryDto countryDto;
+    private final AddressManager addressManager;
+    private final CountryManager countryManager;
     private final CityManager cityManager;
     private final DistrictManager districtManager;
     private final NeighborhoodManager neighborhoodManager;
     private final StreetManager streetManager;
+
+    @PostMapping("/saveAddress")
+    public ResponseEntity saveAddress(@RequestBody AddressSaveDto addressSaveDto){
+        AddressDto addressDto = addressManager.save(addressSaveDto);
+        return ResponseEntity.ok(addressDto);
+    }
 
     @PostMapping("/saveCountry")
     public ResponseEntity saveCountry(@RequestBody Country country){
@@ -50,6 +59,12 @@ public class BaseController {
         streetManager.save(street);
         return ResponseEntity.ok(street);
     }
+
+//    @GetMapping("/getAddress")
+//    public ResponseEntity getAddress(@RequestParam int addressId){
+//        Address address = addressManager.findById(addressId);
+//        return ResponseEntity.ok(address); //TODO : BURASI DEĞİŞECEK
+//    }
 
     @GetMapping("/getCountry")
     public ResponseEntity getCountryByCountryCode(@RequestParam String countryCode){
@@ -86,7 +101,7 @@ public class BaseController {
     public ResponseEntity getAllNeighborhoods(){
         List<Neighborhood> neighborhoods = neighborhoodManager.getAll();
         return ResponseEntity.ok(neighborhoods);
-    }
+    }//
 
     @PutMapping("/setNewNeighborhoodName/{NeighborhoodId}/{newNeighborhoodName}")
     public ResponseEntity setNeighborhoodName(@PathVariable int NeighborhoodId, @PathVariable String newNeighborhoodName){
@@ -98,5 +113,11 @@ public class BaseController {
     public ResponseEntity setStreetName(@PathVariable int StreetId, @PathVariable String newStreetName){
         Street street = streetManager.update(StreetId, newStreetName);
         return ResponseEntity.ok(street);
+    }
+
+    @DeleteMapping("/deleteAddress/{addressId}")
+    public ResponseEntity delete(@PathVariable int addressId){
+        addressManager.deleteById(addressId);
+        return ResponseEntity.ok(Void.TYPE);
     }
 }

@@ -10,9 +10,8 @@ import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
-public class CountryManager {//CountryEntityService
+public class CountryManager {
 
-    //             CountryDao
     private  final CountryRepository countryRepository;
 
     public Country save(Country country) {

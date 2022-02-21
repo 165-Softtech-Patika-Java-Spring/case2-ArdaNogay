@@ -11,4 +11,6 @@ import java.util.Optional;
 @Repository
 public interface NeighborhoodRepository extends JpaRepository<Neighborhood,Integer> {
     Optional<List<Neighborhood>> findAllByDistrictId(Integer districtId);
+
+    boolean existsNeighborhoodByIdAndDistrictId(int neighborhoodId,int districtId);
 }
