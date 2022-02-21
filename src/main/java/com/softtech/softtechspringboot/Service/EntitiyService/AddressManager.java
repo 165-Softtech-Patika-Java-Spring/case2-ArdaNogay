@@ -45,10 +45,11 @@ public class AddressManager {
         return addressDto;
     }
 
-//    public AddressQueryDto findById(int addressId){
-//        Address address = addressRepository.getById(addressId);
-//        AddressResponseDto addressResponseDto = AddressMapper.INSTANCE.convertAddressResponseDto(AddressQueryDto);
-//    }
+    public AddressQueryDto findById(int addressId){
+        Address address = addressRepository.getById(addressId);
+        AddressQueryDto addressQueryDto = addressRepository.findAddressByIdWithNames(address.getId());
+        return addressQueryDto;
+    }
 
     public void deleteById(int addressId){
         Address address = addressRepository.getById(addressId);

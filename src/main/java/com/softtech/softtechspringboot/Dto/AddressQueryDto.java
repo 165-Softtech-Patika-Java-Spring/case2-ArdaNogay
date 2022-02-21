@@ -8,5 +8,4 @@ public interface AddressQueryDto {
     public String getDistrictName();
     public String getNeighborhoodName();
     public String getStreetName();
-
 }

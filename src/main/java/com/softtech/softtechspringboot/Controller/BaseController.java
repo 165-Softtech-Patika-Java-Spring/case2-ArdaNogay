@@ -1,6 +1,8 @@
 package com.softtech.softtechspringboot.Controller;
 
 import com.softtech.softtechspringboot.Dto.AddressDto;
+import com.softtech.softtechspringboot.Dto.AddressQueryDto;
+import com.softtech.softtechspringboot.Dto.AddressResponseDto;
 import com.softtech.softtechspringboot.Dto.AddressSaveDto;
 import com.softtech.softtechspringboot.Entities.*;
 import com.softtech.softtechspringboot.Service.EntitiyService.*;
@@ -60,11 +62,11 @@ public class BaseController {
         return ResponseEntity.ok(street);
     }
 
-//    @GetMapping("/getAddress")
-//    public ResponseEntity getAddress(@RequestParam int addressId){
-//        Address address = addressManager.findById(addressId);
-//        return ResponseEntity.ok(address); //TODO : BURASI DEĞİŞECEK
-//    }
+    @GetMapping("/getAddress")
+    public ResponseEntity getAddress(@RequestParam int addressId){
+        AddressQueryDto addressQueryDto = addressManager.findById(addressId);
+        return ResponseEntity.ok(addressQueryDto);
+    }
 
     @GetMapping("/getCountry")
     public ResponseEntity getCountryByCountryCode(@RequestParam String countryCode){

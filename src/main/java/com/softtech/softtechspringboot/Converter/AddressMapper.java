@@ -17,7 +17,6 @@ public interface AddressMapper {
     Address convertToAddress(AddressDto addressDto);
     Address convertToAddress(AddressSaveDto addressSaveDto);
     AddressDto convertToAddressDto(Address address);
-
     AddressResponseDto convertAddressResponseDto(AddressQueryDto addressQueryDto);
 
 }
